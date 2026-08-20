@@ -1,0 +1,223 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Typeform Forms API",
+    "version": "1.0.0",
+    "description": "Create, read, update, and delete Typeform forms."
+  },
+  "servers": [
+    { "url": "https://api.typeform.com" }
+  ],
+  "security": [
+    { "bearerAuth": [] }
+  ],
+  "paths": {
+    "/forms": {
+      "get": {
+        "operationId": "listForms",
+        "summary": "List forms",
+        "parameters": [
+          { "name": "page", "in": "query", "required": false, "schema": { "type": "integer" } },
+          { "name": "page_size", "in": "query", "required": false, "schema": { "type": "integer" } },
+          { "name": "search", "in": "query", "required": false, "schema": { "type": "string" } },
+          { "name": "workspace_id", "in": "query", "required": false, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "A page of forms",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total_items": { "type": "integer" },
+                    "page_count": { "type": "integer" },
+                    "items": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Form" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createForm",
+        "summary": "Create a form",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/FormInput" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The created form",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Form" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/forms/{uid}": {
+      "get": {
+        "operationId": "getForm",
+        "summary": "Retrieve a form",
+        "parameters": [
+          { "name": "uid", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested form",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Form" }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateForm",
+        "summary": "Update a form (full replace)",
+        "parameters": [
+          { "name": "uid", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/FormInput" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated form",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Form" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteForm",
+        "summary": "Delete a form",
+        "parameters": [
+          { "name": "uid", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "204": { "description": "Deleted" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "FormInput": {
+        "type": "object",
+        "required": ["title"],
+        "properties": {
+          "title": { "type": "string" },
+          "type": { "type": "string", "enum": ["form", "quiz"] },
+          "workspace": {
+            "type": "object",
+            "properties": {
+              "href": { "type": "string" }
+            }
+          },
+          "theme": {
+            "type": "object",
+            "properties": {
+              "href": { "type": "string" }
+            }
+          },
+          "settings": {
+            "type": "object",
+            "properties": {
+              "is_public": { "type": "boolean" },
+              "progress_bar": { "type": "string" },
+              "language": { "type": "string" }
+            }
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "title": { "type": "string" },
+                "type": { "type": "string" },
+                "ref": { "type": "string" }
+              }
+            }
+          }
+        }
+      },
+      "Form": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "type": { "type": "string", "enum": ["form", "quiz"] },
+          "workspace": {
+            "type": "object",
+            "properties": {
+              "href": { "type": "string" }
+            }
+          },
+          "theme": {
+            "type": "object",
+            "properties": {
+              "href": { "type": "string" }
+            }
+          },
+          "settings": {
+            "type": "object",
+            "properties": {
+              "is_public": { "type": "boolean" },
+              "progress_bar": { "type": "string" },
+              "language": { "type": "string" }
+            }
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "title": { "type": "string" },
+                "type": { "type": "string" },
+                "ref": { "type": "string" }
+              }
+            }
+          },
+          "_links": {
+            "type": "object",
+            "properties": {
+              "display": { "type": "string" }
+            }
+          },
+          "created_at": { "type": "string" },
+          "last_updated_at": { "type": "string" },
+          "published_at": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+# BasicFormFlow
+
+main: kit: flow: BasicFormFlow:
+{
+  entity: "form",
+  kind: "basic",
+  name: "BasicFormFlow",
+  step: [
+    {
+      input: {
+        ref: "form_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "form_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "form_ref01",
+        srcdatavar: "form_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-form_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "form_ref01",
+        srcdatavar: "form_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "form01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-form_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "form_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "form01"
+      }
+
+      op: "remove"
+    }
+
+    {
+      input: {
+        suffix: "_rt0"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "form_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicFormFlow"
+}

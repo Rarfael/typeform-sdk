@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "form": {
+      "FORM00": {
+        "created_at": "s6e",
+        "fields": [],
+        "id": "FORM00",
+        "last_updated_at": "s71",
+        "links": {},
+        "published_at": "s73",
+        "settings": {},
+        "theme": {},
+        "title": "s76",
+        "type": "s77",
+        "workspace": {}
+      },
+      "FORM01": {
+        "created_at": "sdc",
+        "fields": [],
+        "id": "FORM01",
+        "last_updated_at": "sdf",
+        "links": {},
+        "published_at": "se1",
+        "settings": {},
+        "theme": {},
+        "title": "se4",
+        "type": "se5",
+        "workspace": {}
+      },
+      "FORM02": {
+        "created_at": "s14a",
+        "fields": [],
+        "id": "FORM02",
+        "last_updated_at": "s14d",
+        "links": {},
+        "published_at": "s14f",
+        "settings": {},
+        "theme": {},
+        "title": "s152",
+        "type": "s153",
+        "workspace": {}
+      }
+    }
+  },
+  "new": {
+    "form": {
+      "form_ref01": {
+        "created_at": "s1b8",
+        "fields": [],
+        "last_updated_at": "s1bb",
+        "links": {},
+        "published_at": "s1bd",
+        "settings": {},
+        "theme": {},
+        "title": "s1c0",
+        "type": "s1c1",
+        "workspace": {}
+      }
+    }
+  }
+}

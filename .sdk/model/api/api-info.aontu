@@ -1,0 +1,27 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      description: "Create, read, update, and delete Typeform forms."
+      security: {
+        in: "header"
+        name: "Authorization"
+        prefix: "Bearer"
+        scheme: "bearerAuth"
+        type: "http"
+      }
+      servers: [
+        {
+          url: "https://api.typeform.com"
+        }
+      ]
+      summary: "Create, read, update, and delete Typeform forms."
+      title: "Typeform Forms API"
+      version: "1.0.0"
+      website: "https://typeform.com"
+    }
+  }
+}
+

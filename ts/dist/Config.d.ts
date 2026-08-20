@@ -1,0 +1,190 @@
+import { BaseFeature } from './feature/base/BaseFeature';
+declare class Config {
+    makeFeature(this: any, fn: string): BaseFeature;
+    main: {
+        name: string;
+    };
+    feature: {
+        test: {
+            options: {
+                active: boolean;
+            };
+        };
+    };
+    options: {
+        base: string;
+        auth: {
+            prefix: string;
+        };
+        headers: {
+            "content-type": string;
+        };
+        entity: {
+            form: {};
+        };
+    };
+    entity: {
+        form: {
+            fields: ({
+                name: string;
+                type: string;
+                op?: undefined;
+            } | {
+                name: string;
+                op: {
+                    create: {
+                        req: boolean;
+                        type: string;
+                    };
+                    update: {
+                        req: boolean;
+                        type: string;
+                    };
+                };
+                type: string;
+            })[];
+            name: string;
+            op: {
+                create: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {};
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        parts: string[];
+                        select: {};
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                    }[];
+                };
+                list: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        parts: string[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                    }[];
+                };
+                load: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            params: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                reqd: boolean;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        parts: string[];
+                        rename: {
+                            param: {
+                                uid: string;
+                            };
+                        };
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                    }[];
+                };
+                remove: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            params: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                reqd: boolean;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        parts: string[];
+                        rename: {
+                            param: {
+                                uid: string;
+                            };
+                        };
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                    }[];
+                };
+                update: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            params: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                reqd: boolean;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        parts: string[];
+                        rename: {
+                            param: {
+                                uid: string;
+                            };
+                        };
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                    }[];
+                };
+            };
+            relations: {
+                ancestors: never[];
+            };
+        };
+    };
+}
+declare const config: Config;
+export { config };
