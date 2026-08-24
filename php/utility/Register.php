@@ -1,0 +1,70 @@
+<?php
+declare(strict_types=1);
+
+// Typeform SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+TypeformUtility::setRegistrar(function (TypeformUtility $u): void {
+    $u->clean = [TypeformClean::class, 'call'];
+    $u->done = [TypeformDone::class, 'call'];
+    $u->make_error = [TypeformMakeError::class, 'call'];
+    $u->feature_add = [TypeformFeatureAdd::class, 'call'];
+    $u->feature_hook = [TypeformFeatureHook::class, 'call'];
+    $u->feature_init = [TypeformFeatureInit::class, 'call'];
+    $u->fetcher = [TypeformFetcher::class, 'call'];
+    $u->make_fetch_def = [TypeformMakeFetchDef::class, 'call'];
+    $u->make_context = [TypeformMakeContext::class, 'call'];
+    $u->make_options = [TypeformMakeOptions::class, 'call'];
+    $u->make_request = [TypeformMakeRequest::class, 'call'];
+    $u->make_response = [TypeformMakeResponse::class, 'call'];
+    $u->make_result = [TypeformMakeResult::class, 'call'];
+    $u->make_point = [TypeformMakePoint::class, 'call'];
+    $u->make_spec = [TypeformMakeSpec::class, 'call'];
+    $u->make_url = [TypeformMakeUrl::class, 'call'];
+    $u->param = [TypeformParam::class, 'call'];
+    $u->prepare_auth = [TypeformPrepareAuth::class, 'call'];
+    $u->prepare_body = [TypeformPrepareBody::class, 'call'];
+    $u->prepare_headers = [TypeformPrepareHeaders::class, 'call'];
+    $u->prepare_method = [TypeformPrepareMethod::class, 'call'];
+    $u->prepare_params = [TypeformPrepareParams::class, 'call'];
+    $u->prepare_path = [TypeformPreparePath::class, 'call'];
+    $u->prepare_query = [TypeformPrepareQuery::class, 'call'];
+    $u->graphql_body = [TypeformGraphql::class, 'body'];
+    $u->graphql_errors = [TypeformGraphql::class, 'errors'];
+    $u->result_basic = [TypeformResultBasic::class, 'call'];
+    $u->result_body = [TypeformResultBody::class, 'call'];
+    $u->result_headers = [TypeformResultHeaders::class, 'call'];
+    $u->transform_request = [TypeformTransformRequest::class, 'call'];
+    $u->transform_response = [TypeformTransformResponse::class, 'call'];
+});

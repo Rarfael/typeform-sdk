@@ -1,0 +1,42 @@
+
+# Model definitions.
+@"@voxgig/apidef/model/apidef.aon"
+@"@voxgig/sdkgen/model/sdkgen.aon"
+
+
+# SDK Details.
+name: 'typeform'
+origin: 'voxgig-sdk'
+def: 'typeform-forms-only.json'
+
+
+# API Information
+@"api/api-info.aon"
+
+
+# SDK Configuration.
+@"config.aon"
+
+
+# SDK Entities
+@"entity/entity-index.aon"
+
+
+# SDK Features.
+@"feature/feature-index.aon"
+ 
+
+# SDK Targets.
+@"target/target-index.aon"
+
+
+# Operation workflows.
+@"flow/flow-index.aon"
+
+
+# Seneca provider plugin generates out-of-tree into the sibling repo.
+main: kit: target: 'seneca-provider': output: {
+  path: '../../seneca/typeform-provider'
+  sdkrel: '../../voxgig-sdk/typeform-sdk'
+}
+
